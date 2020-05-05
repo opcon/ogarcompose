@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  server:
+    build:
+      context: ./OgarII/app
+    ports:
+      - 443:443
+    volumes:
+      - ./settings:/home/node/app/settings
+  client:
+    build:
+      context: ./Cigar2/app
+    ports:
+      - 3000:3000
