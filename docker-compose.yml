@@ -1,15 +1,32 @@
 version: '3.2'
 
 services:
-  server:
+  server-ffa:
     build:
       context: ./OgarII/app
     ports:
-      - 443:443
+      - 127.0.0.1:3010:443
     volumes:
-      - ./settings:/home/node/app/settings
+      - ./ffa-settings:/home/node/app/settings
+
+  server-teams:
+    build:
+      context: ./OgarII/app
+    ports:
+      - 127.0.0.1:3011:443
+    volumes:
+      - ./teams-settings:/home/node/app/settings
+
+  server-lms:
+    build:
+      context: ./OgarII/app
+    ports:
+      - 127.0.0.1:3012:443
+    volumes:
+      - ./lms-settings:/home/node/app/settings
+
   client:
     build:
       context: ./Cigar2/app
     ports:
-      - 3000:3000
+      - 127.0.0.1:3002:3000
